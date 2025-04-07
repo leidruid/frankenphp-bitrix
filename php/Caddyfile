@@ -40,4 +40,5 @@
 		path /bitrix/php_interface/dbconn.php
 		path /bitrix/.settings.php
 	}
-	respond @blocked 403}
+	respond @blocked 403
+}
