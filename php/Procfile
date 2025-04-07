@@ -1,0 +1,2 @@
+php: frankenphp run --config /etc/caddy/Caddyfile --adapter caddyfile
+cron: crond -f

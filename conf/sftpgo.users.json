@@ -1,0 +1,14 @@
+[
+  {
+    "username": "appuser",
+    "password": "Redsoft!123",
+    "home_dir": "/app/public",
+    "permissions": [
+      {
+        "path": "/app/public",
+        "read": true,
+        "write": true
+      }
+    ]
+  }
+]

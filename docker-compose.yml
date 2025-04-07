@@ -1,0 +1,46 @@
+version: '3.1'
+
+services:
+  php:
+    build:
+      context: ./php
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./caddy/data:/data
+      - ./caddy/config:/config
+      - ./public:/app/public
+      - ./php/php.ini:/usr/local/etc/php/php.ini
+      - ./php/msmtp.conf:/app/msmtp.conf
+    depends_on:
+      - mariadb
+      - memcache
+  mariadb:
+    image: mariadb:latest
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --sql-mode="" --innodb_buffer_pool_size=1G --table_definition_cache=16000 --table_open_cache=2000 --innodb_buffer_pool_instances=2
+    restart: always
+    environment:
+      TZ: Europe/Moscow
+    volumes:
+      - ./mariadb:/var/lib/mysql
+  memcache:
+    image: memcached:latest
+    restart: always
+    command:
+      - --conn-limit=1024
+      - --memory-limit=32
+      - --threads=4
+  sftpgo:
+    image: sftpgo/sftpgo
+    restart: always
+    volumes:
+      - ./public:/public:rw
+      - ./sftpgo/sftpgo.conf:/etc/sftpgo/sftpgo.conf:ro
+      - ./sftpgo/sftpgo.users.json:/etc/sftpgo/sftpgo.users.json:ro
+    ports:
+      - "2022:2022"
+    depends_on:
+      - php
