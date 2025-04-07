@@ -33,7 +33,7 @@ services:
       - --memory-limit=32
       - --threads=4
   sftpgo:
-    image: drakkan/sftpgo
+    image: drakkan/sftpgo:v2.5
     restart: always
     environment:
       TZ: Europe/Moscow
