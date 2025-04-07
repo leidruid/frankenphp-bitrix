@@ -13,7 +13,6 @@ services:
       - ./caddy/data:/data
       - ./caddy/config:/config
       - ./public:/app/public
-      - ./php/php.ini:/usr/local/etc/php/php.ini
       - ./php/msmtp.conf:/app/msmtp.conf
     depends_on:
       - mariadb
