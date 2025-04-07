@@ -13,7 +13,8 @@ services:
       - ./caddy/data:/data
       - ./caddy/config:/config
       - ./public:/app/public
-      - ./php/msmtp.conf:/app/msmtp.conf
+      - ./conf/msmtp.conf:/app/msmtp.conf
+      - ./conf/crontab:/app/crontab
     depends_on:
       - mariadb
       - memcache
@@ -36,9 +37,11 @@ services:
     image: drakkan/sftpgo
     restart: always
     volumes:
-      - ./public:/public:rw
-      - ./sftpgo/sftpgo.conf:/etc/sftpgo/sftpgo.conf:ro
-      - ./sftpgo/sftpgo.users.json:/etc/sftpgo/sftpgo.users.json:ro
+      - ./public:/app/public
+      - ./conf/crontab:/app/crontab
+      - ./conf/msmtp.conf:/app/msmtp.conf
+      - ./conf/sftpgo.conf:/etc/sftpgo/sftpgo.conf
+      - ./conf/sftpgo.users.json:/etc/sftpgo/sftpgo.users.json
     ports:
       - "2022:2022"
     depends_on:
