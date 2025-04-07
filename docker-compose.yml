@@ -6,9 +6,7 @@ services:
       context: ./php
     restart: always
     ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
+      - "8080:8080"
     volumes:
       - ./caddy/data:/data
       - ./caddy/config:/config
