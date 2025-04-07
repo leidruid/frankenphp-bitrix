@@ -33,7 +33,7 @@ services:
       - --memory-limit=32
       - --threads=4
   sftpgo:
-    image: sftpgo/sftpgo
+    image: drakkan/sftpgo
     restart: always
     volumes:
       - ./public:/public:rw
