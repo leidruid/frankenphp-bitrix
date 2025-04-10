@@ -43,4 +43,4 @@ services:
       SFTP_USER: appuser
       SFTP_PASSWORD: AppUserPassword123
     ports:
-      - "2022:22"
+      - "2022:2022"
