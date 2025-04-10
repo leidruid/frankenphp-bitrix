@@ -32,3 +32,13 @@ services:
       - --conn-limit=1024
       - --memory-limit=32
       - --threads=4
+  proftpd:
+    build:
+      context: ./proftpd
+    restart: always
+    environment:
+      TZ: Europe/Moscow
+      SFTP_USER: appuser
+      SFTP_PASSWORD: AppUserPassword123
+    ports:
+      - "2022:22"
