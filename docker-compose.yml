@@ -21,7 +21,9 @@ services:
     command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --sql-mode="" --innodb_buffer_pool_size=1G --table_definition_cache=16000 --table_open_cache=2000 --innodb_buffer_pool_instances=2
     restart: always
     environment:
-      MARIADB_ROOT_PASSWORD: password
+      MARIADB_USER: appuser
+      MARIADB_PASSWORD: AppPassw0rd
+      MARIADB_DATABASE: app_db
       TZ: Europe/Moscow
     volumes:
       - ./mariadb:/var/lib/mysql
