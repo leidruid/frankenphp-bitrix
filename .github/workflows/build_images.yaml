@@ -32,10 +32,10 @@ jobs:
         with:
           context: ./php
           push: true
-          tags: leidruid/frankenphp-bitrix-php:${{ steps.get_tag.outputs.TAG }}
+          tags: leidruid/frankenphp-bitrix-php:${{ steps.get_tag.outputs.TAG }},leidruid/frankenphp-bitrix-php:latest
       - name: Build and push ProFTPd Docker image
         uses: docker/build-push-action@v5
         with:
           context: ./proftpd
           push: true
-          tags: leidruid/frankenphp-bitrix-sftp:${{ steps.get_tag.outputs.TAG }}
+          tags: leidruid/frankenphp-bitrix-sftp:${{ steps.get_tag.outputs.TAG }},leidruid/frankenphp-bitrix-sftp:latest

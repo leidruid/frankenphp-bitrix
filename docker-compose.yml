@@ -1,7 +1,6 @@
 services:
   php:
-    build:
-      context: ./php
+    image: leidruid/frankenphp-bitrix-php:latest
     restart: always
     environment:
       TZ: Europe/Moscow
@@ -35,8 +34,7 @@ services:
       - --memory-limit=32
       - --threads=4
   proftpd:
-    build:
-      context: ./proftpd
+    image: leidruid/frankenphp-bitrix-sftp:latest
     restart: always
     environment:
       TZ: Europe/Moscow
