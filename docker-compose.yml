@@ -40,5 +40,9 @@ services:
       TZ: Europe/Moscow
       SFTP_USER: appuser
       SFTP_PASSWORD: AppUserPassword123
+    volumes:
+      - ./public:/app/public
+      - ./conf/msmtp.conf:/app/msmtp.conf
+      - ./conf/crontab:/app/crontab
     ports:
       - "2022:2022"
